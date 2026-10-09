@@ -225,11 +225,10 @@ without modification. PSG_ACC fold means agree with the paper after rounding.
 The original ACC-only experiment ran on another server; its research artifacts
 are not included in this extraction.
 
-## License status
+## Contact
 
-A software license has not yet been assigned to this distribution. Upstream
-provenance and the outstanding license status are recorded in [NOTICE](NOTICE).
-The journal article's CC BY license applies to the article.
+If you have any questions or encounter issues, please contact
+[chuguo@ethz.ch](mailto:chuguo@ethz.ch).
 
 ## Acknowledgments
 
