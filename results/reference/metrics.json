@@ -1,5 +1,5 @@
 {
-  "description": "Metrics recomputed from archived PSG and PSG_ACC research predictions.",
+  "description": "Four-fold reference metrics for PSG, ACC and PSG_ACC. PSG and PSG_ACC metrics were recomputed from archived predictions; ACC metrics were recomputed from archived confusion matrices.",
   "std_ddof": 0,
   "modalities": {
     "PSG": {
@@ -170,6 +170,177 @@
           173,
           3,
           3676
+        ]
+      ]
+    },
+    "ACC": {
+      "folds": [
+        {
+          "fold": 1,
+          "acc": 0.7627450980392156,
+          "macro_f1": 0.7393384771583226,
+          "weighted_f1": 0.764961121009837,
+          "kappa": 0.6039429338952453,
+          "cm": [
+            [
+              950,
+              148,
+              141
+            ],
+            [
+              77,
+              217,
+              3
+            ],
+            [
+              235,
+              1,
+              778
+            ]
+          ],
+          "per_class_f1": [
+            0.7596961215513794,
+            0.6546003016591252,
+            0.8037190082644629
+          ],
+          "class_names": [
+            "Wake",
+            "Sleep",
+            "Rumination"
+          ],
+          "n_samples": 2550
+        },
+        {
+          "fold": 2,
+          "acc": 0.700938232994527,
+          "macro_f1": 0.6793573348470122,
+          "weighted_f1": 0.7071053792875985,
+          "kappa": 0.5273188939831693,
+          "cm": [
+            [
+              860,
+              226,
+              113
+            ],
+            [
+              39,
+              281,
+              52
+            ],
+            [
+              249,
+              86,
+              652
+            ]
+          ],
+          "per_class_f1": [
+            0.7328504473796336,
+            0.5823834196891192,
+            0.7228381374722838
+          ],
+          "class_names": [
+            "Wake",
+            "Sleep",
+            "Rumination"
+          ],
+          "n_samples": 2558
+        },
+        {
+          "fold": 3,
+          "acc": 0.7271735176427792,
+          "macro_f1": 0.671224778027585,
+          "weighted_f1": 0.7317089698822722,
+          "kappa": 0.5774132587807037,
+          "cm": [
+            [
+              593,
+              471,
+              141
+            ],
+            [
+              87,
+              256,
+              0
+            ],
+            [
+              48,
+              3,
+              1150
+            ]
+          ],
+          "per_class_f1": [
+            0.6135540610450078,
+            0.4771668219944082,
+            0.9229534510433387
+          ],
+          "class_names": [
+            "Wake",
+            "Sleep",
+            "Rumination"
+          ],
+          "n_samples": 2749
+        },
+        {
+          "fold": 4,
+          "acc": 0.8370264474624732,
+          "macro_f1": 0.7853973507390468,
+          "weighted_f1": 0.8398252786984577,
+          "kappa": 0.7308557513327607,
+          "cm": [
+            [
+              460,
+              84,
+              33
+            ],
+            [
+              56,
+              116,
+              0
+            ],
+            [
+              55,
+              0,
+              595
+            ]
+          ],
+          "per_class_f1": [
+            0.8013937282229965,
+            0.6236559139784946,
+            0.9311424100156495
+          ],
+          "class_names": [
+            "Wake",
+            "Sleep",
+            "Rumination"
+          ],
+          "n_samples": 1399
+        }
+      ],
+      "mean": {
+        "acc": 0.7569708240347488,
+        "macro_f1": 0.7188294851929916,
+        "kappa": 0.6098827094979697
+      },
+      "std": {
+        "acc": 0.051160961214528476,
+        "macro_f1": 0.04657294888675027,
+        "kappa": 0.07506798026991231
+      },
+      "summed_confusion_matrix": [
+        [
+          2863,
+          929,
+          428
+        ],
+        [
+          259,
+          870,
+          55
+        ],
+        [
+          587,
+          90,
+          3175
         ]
       ]
     },

@@ -126,16 +126,9 @@ stored separately under `data/raw/<modality>/` and `data/tf/<modality>/`.
 Preprocessing refuses to replace an existing prepared dataset; use a fresh
 `--data-root` when changing inputs.
 
-The STFT follows the experiment script: a 2-second Hann window, 1-second hop,
-256-point FFT, the first 128 real-FFT bins (DC included, Nyquist excluded), and
-`log1p` magnitude. Each epoch produces `(channels, 29, 128)` features.
-Each channel is standardized with one mean and standard deviation over **all
-prepared epochs**, matching the archived pipeline. These statistics therefore
-include held-out data; this is a property of the historical experiment, not
-training-fold-only normalization. Changing the preprocessing population changes
-the features. Exact historical reproduction requires the original population
-used to compute these statistics, including recordings outside the seven selected
-records when those were present during preprocessing.
+Preprocessing converts each epoch into `(channels, 29, 128)` time-frequency
+features. Each channel is standardized over all prepared epochs, including
+held-out subjects.
 
 A feature manifest records channel order and subject boundaries. Do not rename
 labels independently of already concatenated features; rename aligned inputs and
@@ -143,8 +136,7 @@ rebuild both preprocessing stages instead.
 
 ## Four-fold training
 
-The default split is configured in [configs/folds.json](configs/folds.json), using
-the Cow numbering in the paper's Table 1:
+The default subject split is configured in [configs/folds.json](configs/folds.json):
 
 | Fold | Test subjects | Training subjects |
 | --- | --- | --- |
@@ -159,7 +151,7 @@ the same animal must be assigned to the same test group. Ten percent of each
 fold's training epochs form a stratified validation set; the test fold is used
 only after checkpoint selection.
 
-Run the original entry-point name with configurable GPU assignments:
+Start four-fold training with the desired modality and GPU assignment:
 
 ```bash
 # Four GPUs, one fold on each GPU
@@ -172,34 +164,12 @@ GPUS=0 bash run_4fold_mamba_parallel2.sh PSG --data-root data
 GPUS=0 bash run_4fold_mamba_parallel2.sh ACC --data-root data
 ```
 
-Results default to `outputs/<modality>/`. Set `OUT_DIR` to choose another location:
-
-```bash
-OUT_DIR=outputs/psg_trial2 GPUS=0 bash run_4fold_mamba_parallel2.sh PSG
-```
-
-Alternatively, use the Python entry point for a single fold:
-
-```bash
-python kfold4_subject_level_mamba1.py --modality PSG --fold 1 --gpu 0
-```
-
-Defaults match the research configuration: four blocks per channel encoder and
-four fusion blocks, state dimension 16, convolution size 4, expansion factor 2,
-dropout 0.2, AdamW with learning rate `5e-6` and weight decay `1e-2`, batch size
-32, 200 maximum epochs, patience 20, label smoothing 0.1 and gradient clipping
-at 1.0. Training uses inverse-square-root class-frequency sampling and seed 42.
-The saved checkpoint maximizes validation macro F1, using the original `1e-4`
-minimum improvement. `--epochs`, `--batch-size` and `--seed` override their defaults.
-The full models contain 70,372,355 parameters (PSG), 23,414,595 (ACC), and
-122,094,339 (PSG_ACC); a CUDA GPU is recommended for training.
+Results are saved to `outputs/<modality>/`. Set `OUT_DIR` to use another location.
 
 ## Evaluation and results
 
-Each fold saves its best weights, configuration, preprocessing manifest, history,
-metrics, test subject order, true labels, predicted labels and class probabilities.
-JSON files can be inspected without unpickling Python objects. Weight files retain
-the original model's state-dict keys.
+Each fold saves its best model, predictions and evaluation metrics. Use the
+following commands to evaluate a saved model or summarize all four folds:
 
 ```bash
 # Reload the saved checkpoint and evaluate a fold
@@ -210,20 +180,7 @@ python kfold4_subject_level_mamba1.py --modality PSG --fold 1 \
 python kfold4_subject_level_mamba1.py --summary --out-dir outputs/PSG
 ```
 
-The summary reports unweighted means and population standard deviations (`ddof=0`)
-over four folds and their summed confusion matrix. Confusion-matrix rows are true
-labels, columns are predictions, and their order is Wake, Sleep, Rumination.
-Training refuses to overwrite existing fold artifacts, and the shell launcher
-returns a failure if any fold fails.
-
-[Archived reference metrics](results/reference/metrics.json) were independently
-recomputed from the saved PSG and PSG_ACC predictions.
-The PSG summed confusion matrix matches Table 2 of the paper.
-The local PSG Single Run fold means are macro F1 **86.08%** and accuracy **90.76%**,
-whereas the paper reports **86.37%** and **90.80%**. The archived values are retained
-without modification. PSG_ACC fold means agree with the paper after rounding.
-The original ACC-only experiment ran on another server; its research artifacts
-are not included in this extraction.
+Reference results: [metrics.json](results/reference/metrics.json).
 
 ## Contact
 
