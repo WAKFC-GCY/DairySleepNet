@@ -1,0 +1,7 @@
+# Create the conda environment and install CUDA-enabled PyTorch as described in README.md.
+torch==2.5.1
+numpy>=1.26,<3
+scipy>=1.11,<2
+scikit-learn>=1.5,<2
+einops>=0.8,<1
+mne>=1.8,<2

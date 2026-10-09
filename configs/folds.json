@@ -1,0 +1,9 @@
+{
+  "description": "Four folds with the Cow numbering used in Table 1 of the paper.",
+  "test_groups": [
+    ["Cow1", "Cow2"],
+    ["Cow3", "Cow4"],
+    ["Cow5", "Cow6"],
+    ["Cow7"]
+  ]
+}

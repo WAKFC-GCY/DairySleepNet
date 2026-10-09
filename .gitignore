@@ -1,0 +1,30 @@
+# Full datasets and generated files
+/data/
+/test_artifacts/
+/tests/
+# Training artifacts
+/outputs/
+*.edf
+*.npy
+*.npz
+*.pt
+*.pth
+*.pkl
+*.log
+# Include only the curated example recordings and their labels
+/demo_data/*
+!/demo_data/README.md
+!/demo_data/aligned/
+/demo_data/aligned/*
+!/demo_data/aligned/Cow[1-7].edf
+!/demo_data/aligned/Cow[1-7]_ACC.edf
+!/demo_data/aligned/Cow[1-7].txt
+# Local research reports and identity mapping
+/LOCAL_*
+# Python and editor files
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store

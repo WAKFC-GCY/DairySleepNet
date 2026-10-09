@@ -1,0 +1,17 @@
+DairySleepNet provenance
+
+This project was developed from MultiChannelSleepNet:
+https://github.com/yangdai97/MultiChannelSleepNet
+
+The retained pipeline contains the selective state-space model and dairy-cow
+preprocessing/training adaptations associated with DairySleepNet.
+
+The supplied source archives contain no LICENSE, COPYING or NOTICE file.
+The upstream GitHub repository also reported no license and listed no license
+file when inspected on 2026-10-09. No upstream copyright or license notice was
+removed from the retained source files. This notice records provenance; it does
+not grant a license. Upstream permissions and a license for the resulting
+distribution remain to be resolved before a licensed public release.
+
+The CC BY statement in the associated journal article applies to the article;
+it is not used here as a software license grant.

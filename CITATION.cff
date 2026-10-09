@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use DairySleepNet, please cite the associated article."
+title: "DairySleepNet"
+type: software
+authors:
+  - family-names: Guo
+    given-names: Chuanyi
+  - family-names: Ternman
+    given-names: Emma
+  - family-names: Zhao
+    given-names: Xinjie
+  - family-names: Liu
+    given-names: Kai
+  - family-names: Niu
+    given-names: Mutian
+preferred-citation:
+  type: article
+  title: "Deep learning-based classification of wakefulness, sleep, and rumination states in dairy cows from polysomnography and RumiWatch data"
+  authors:
+    - family-names: Guo
+      given-names: Chuanyi
+    - family-names: Ternman
+      given-names: Emma
+    - family-names: Zhao
+      given-names: Xinjie
+    - family-names: Liu
+      given-names: Kai
+    - family-names: Niu
+      given-names: Mutian
+  journal: "Journal of Dairy Science"
+  year: 2026
+  doi: "10.3168/jds.2026-28809"
