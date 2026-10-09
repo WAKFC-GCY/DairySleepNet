@@ -50,11 +50,6 @@ training or evaluation. The selective state-space scan is implemented in PyTorch
 
 ## Data preparation
 
-The repository includes a small set of real signal excerpts in
-[demo_data/aligned](demo_data/aligned), with their labels, to illustrate the input
-format. The full research dataset and trained weights are not included.
-The included reference metrics contain aggregate evaluation results.
-
 ### Example recordings
 
 The examples contain seven Cow IDs, each with nine 30-second epochs: three Wake,
@@ -71,8 +66,7 @@ The signal excerpts were selected from the prepared research recordings and
 exported as EDF files with generic Cow identifiers. The selected epochs are not
 consecutive; the resulting files demonstrate the data structure rather than a
 continuous behavioral recording. See [the example data description](demo_data/README.md)
-for selection details and label definitions. These examples cannot reproduce the
-paper's performance estimates.
+for selection details and label definitions.
 
 Prepare the included examples with:
 

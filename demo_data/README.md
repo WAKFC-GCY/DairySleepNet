@@ -45,8 +45,7 @@ class; the label sequence reflects source order rather than a fixed class order.
 
 The selected epochs are nonconsecutive excerpts. Their concatenation does not
 preserve the original gaps or a continuous behavioral timeline. The balanced
-class counts also differ from the distribution of the full dataset. These files
-illustrate data organization and are not a benchmark for reproducing paper scores.
+class counts also differ from the distribution of the full dataset.
 
 The EDF headers contain placeholder patient/recording fields and the export date
 `01.01.85`; this date is not the observation date. Cow filenames provide the
